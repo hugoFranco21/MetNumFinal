@@ -1,0 +1,23 @@
+	INPUT								|
+	-- Set of data (set of points)					|
+	OUTPUT 								|
+	-- Graph							|
+------------------------------------------------------------------------
+
+	Matrix data					// INPUT
+	n = data.#columns				// n=number of points
+	Sorting input using x values			// 
+	
+	Vector  h values				// h = n+1-n
+	Vector  sigma values 				// Sigma values size=(n-2)
+
+	sigma0 = 0					// First sigma value
+	sigmaN = 0					// Last sigma value
+	
+	Calculate matrix of coefficients		// Here we obtain the values for the multiples sigmaN 
+	Vector of functions [1...n-1]			// Array of functions data type
+
+	for each					// for each function in the vector
+	BEGIN
+		evaluar vector of functions [a b]	// Graph every polinomio which interval is [a b]
+	END
