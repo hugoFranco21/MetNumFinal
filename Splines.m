@@ -3,10 +3,8 @@
 % This script implements cubic polynomials for splines
 %
 % Input:
-% -- Function
-% -- a
-% -- b
+% -- Matrix of points
 %
 % Output:
-% --
+% -- Graph
 %
