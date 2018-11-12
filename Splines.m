@@ -63,12 +63,12 @@ if n == 2
     %fun = zeros(m,1);
     q = cell(m-1,1)
     for i = 1:m-1
-        q{i,1} = @(x) (sigma(i)/6)*(((DATA(i+1,1)-x)^3)/h(i)-h(i)*((DATA(i+1,1)-x))) + sigma(i+1)/6*((x-(DATA(i,1))^3)/h(i)-h(i)*((x-DATA(i,1)))) + DATA(i,2)*((DATA(i+1,1)-x)/h(i))+ DATA(i+1,2)*((x-DATA(i,1))/h(i))
+        q{i,1} = @(x) (sigma(i)/6)*(((DATA(i+1,1)-x)^3)/h(i)-h(i)*((DATA(i+1,1)-x))) + (sigma(i+1)/6)*(((x-DATA(i,1))^3)/h(i)-h(i)*((x-DATA(i,1)))) + DATA(i,2)*((DATA(i+1,1)-x)/h(i))+ DATA(i+1,2)*((x-DATA(i,1))/h(i))
         
     end
-    
     
 else
     disp('ERROR: Matrix does not have 2 columns')
     return
 end
+
