@@ -22,26 +22,20 @@ if n == 2
     % Graph of the points
     plot(DATA(:,1),DATA(:,2), 'o')
     hold on
-    % Graph of the interpolation
-    plot(DATA(:,1),DATA(:,2))
-    hold on
     
-    x = input(' Where do you need the estimation? ');
-    if(x > max(DATA(:,1)) || x < min(DATA(:,1)))
-        disp(' ERROR: Sorry, we can not make an extrapolation')
-        return
-    else
-        pos = sum(x>DATA(:,1));
-        x0 = DATA(pos,1);
-        y0 = DATA(pos,2);
-        x1 = DATA(pos+1,1);
-        y1 = DATA(pos+1,2);
-        
-        y = y0 +((y1-y0)/(x1-x0))*(x-x0)
-        plot(x,y,'*r')
-        hold on
+    % Calculate and fill the vector of increments
+    h = zeros(m-1,1)
+    for i = 1:m-1
+        h(i) = DATA(i+1,1) - DATA(i,1)
     end
     
+    %Create and initialize with 0 vector sigma
+    sigma0 = 0;
+    sigmaM = 0;
+    sigma = zeros(m-2,1);
+    
+    %Matrix of coefficients
+    coeff = zeros(m-2)
 else
     disp('ERROR: Matrix does not have 2 columns')
     return
