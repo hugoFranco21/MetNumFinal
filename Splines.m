@@ -35,7 +35,21 @@ if n == 2
     sigma = zeros(m-2,1);
     
     %Matrix of coefficients
-    coeff = zeros(m-2)
+    coeff = zeros(m-2);
+    for i = 1:m-2
+        for j = 1:m-2
+            if i == j
+                coeff(i,j) = 2*(h(i)+h(i+1));
+            end
+            if (i - j) == 1
+                coeff(i,j) = h(j+1);
+            end
+            if (j - i) == 1
+                coeff(i,j) = h(i+1);
+            end
+        end
+    end
+    
 else
     disp('ERROR: Matrix does not have 2 columns')
     return
