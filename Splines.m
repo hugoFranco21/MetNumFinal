@@ -12,14 +12,14 @@
 %
 
 clc
-clear all
+%clear all
 close all
 
 % Ask for data
 DATA = input('Give me the data points as a 2 column matrix ');
 [m,n] = size(DATA);
 if m < 2
-    disp(' To use splines you need at least 2 points in the plane ');
+    disp(' To use splines you need at least 2 points on the plane ');
     return
 end
 if n == 2
@@ -62,12 +62,13 @@ if n == 2
     sigma = 0;
     sig = coeff\con;
     sigma = [sigma;sig;sigma];
-    %fun = zeros(m,1);
+    %-----The block bellow creates a cell array that contains the polynomials
     q = cell(m-1,1);
     for i = 1:m-1
         q{i,1} = @(x) (sigma(i)/6)*(((DATA(i+1,1)-x).^3)/h(i)-h(i)*((DATA(i+1,1)-x))) + (sigma(i+1)/6)*(((x-DATA(i,1)).^3)/h(i)-h(i)*((x-DATA(i,1)))) + DATA(i,2)*((DATA(i+1,1)-x)/h(i))+ DATA(i+1,2)*((x-DATA(i,1))/h(i));
         
     end
+    %-----------------------------------------------------------------
     opc = 1;
     
     while opc == 1
@@ -92,7 +93,7 @@ if n == 2
             plot(x1,y1,'m')
             hold on
         end
-        opc = input(' Do you want another aproximation? (1 for Yes, 0 for No) ');
+        opc = input(' Do you want another approximation? (1 for Yes, 0 for No) ');
     end
 else
     disp('ERROR: Matrix does not have 2 columns')
