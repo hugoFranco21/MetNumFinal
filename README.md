@@ -1,2 +1,2 @@
 # MetNumFinal
-Repository with the source code of our final project for Numeric Methods
+Repository with the source code of our final project for Numerical Methods
