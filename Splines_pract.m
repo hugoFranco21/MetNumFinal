@@ -16,7 +16,8 @@ clc
 close all
 
 % Ask for data
-DATA = input('Give me the data points as a 2 column matrix ');
+DATA = [0.1 10;0.2 5;0.5 2;1 1; 2 0.5; 5 0.2; 10 0.1];
+
 [m,n] = size(DATA);
 if m < 2
     disp(' To use splines you need at least 2 points on the plane ');
@@ -134,10 +135,22 @@ if n == 2
             hold on
             legend('Approximation','DATA','Lagrange')      
         end
+        %Graph of the original function
+        fun = @(x) 1./x;
+        x3 = linspace(min(DATA(:,1)), max(DATA(:,1)));
+        y3 = fun(x3);
+        figure(3)
+        plot(DATA(:,1),DATA(:,2), 'xg')
+        hold on
+        plot(x3,y3,'r')
+        hold on
+        plot(xu,fun(xu),'ok')
+        hold on
+        yReal = fun(xu)
+        legend('DATA','Real Function','Value')
         opc = input(' Do you want another approximation? (1 for Yes, 0 for No) ');
     end
 else
     disp('ERROR: Matrix does not have 2 columns')
     return
 end
-

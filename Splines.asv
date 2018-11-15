@@ -82,10 +82,10 @@ if n == 2
             ind = ind + 1;
         end
         yu = q{con}(xu)
-        plot(xu,yu,'ob')
+        plot(xu,yu,'o')
         hold on
         % Graph of the points
-            plot(DATA(:,1),DATA(:,2), 'xk')
+            plot(DATA(:,1),DATA(:,2), 'x')
             hold on
         % Graph the spline
         for i = 1:m-1
@@ -132,7 +132,8 @@ if n == 2
             hold on
             plot(x2, y2, 'g')
             hold on
-            legend('Approximation','DATA','Lagrange')      
+            
+        %legend('DATA','Approximation','Splines','Lagrange')       
         end
         opc = input(' Do you want another approximation? (1 for Yes, 0 for No) ');
     end
