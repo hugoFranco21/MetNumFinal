@@ -1,4 +1,7 @@
 %
+% Name: Hugo David Franco Avila A01654856
+%       Roberto Carlos Guzmán Cortés A01702388
+%       Manuel Flores Ramírez A01703912
 %
 % This script implements cubic polynomials for splines
 % After some mathematical analysis, we get to the conclusion
@@ -6,9 +9,11 @@
 %
 % Input:
 % -- Matrix of points
+% -- Value where approximation is needed
 %
 % Output:
-% -- Graph
+% -- Graph (Spline, Lagrange)
+% -- Value of approximation for both methods
 %
 
 clc
@@ -16,7 +21,7 @@ clc
 close all
 
 % Ask for data
-DATA = input('Give me the data points as a 2 column matrix ');
+DATA = input('Give the data points as a 2 column matrix ');
 [m,n] = size(DATA);
 if m < 2
     disp(' To use splines you need at least 2 points on the plane ');

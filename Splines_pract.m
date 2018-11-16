@@ -1,21 +1,25 @@
 %
+% Name: Hugo David Franco Avila A01654856
+%       Roberto Carlos Guzmán Cortés A01702388
+%       Manuel Flores Ramírez A01703912
 %
 % This script implements cubic polynomials for splines
 % After some mathematical analysis, we get to the conclusion
 % that this problem can be solved as a system of linear equations
 %
 % Input:
-% -- Matrix of points
-%
+% -- Value where approximation is needed
+% 
 % Output:
-% -- Graph
+% -- Graphs (Spline, Lagrange, Real)
+% -- Value for each approximation and real function
 %
 
 clc
 %clear all
 close all
 
-% Ask for data
+% Assign DATA
 DATA = [0.1 10;0.2 5;0.5 2;1 1; 2 0.5; 5 0.2; 10 0.1];
 
 [m,n] = size(DATA);
@@ -63,7 +67,7 @@ if n == 2
     sigma = 0;
     sig = coeff\con;
     sigma = [sigma;sig;sigma];
-    %-----The block bellow creates a cell array that contains the polynomials
+    %-----The block below creates a cell array that contains the polynomials
     q = cell(m-1,1);
     for i = 1:m-1
         q{i,1} = @(x) (sigma(i)/6)*(((DATA(i+1,1)-x).^3)/h(i)-h(i)*((DATA(i+1,1)-x))) + (sigma(i+1)/6)*(((x-DATA(i,1)).^3)/h(i)-h(i)*((x-DATA(i,1)))) + DATA(i,2)*((DATA(i+1,1)-x)/h(i))+ DATA(i+1,2)*((x-DATA(i,1))/h(i));
